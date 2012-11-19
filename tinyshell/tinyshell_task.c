@@ -13,9 +13,11 @@
 #include "utils/uartstdio.h"
 
 #include "commands/about.h"
+#include "commands/rgbled.h"
 
 static Command_t commands[] = {
 	{"about", about, 0, "About this shell"},
+	{"rgbled", rgbled, rgbled_args, "Controls RGB Led: on, off, set RRRR GGGG BBBB 0-FFFF"},
 	NULL_TERMINATOR
 };
 
