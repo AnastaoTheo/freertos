@@ -12,6 +12,7 @@
 #include "queue.h"
 #include "semphr.h"
 
+#include "tinyshell/tinyshell_task.h"
 
 // The error routine that is called if the driver library encounters an error.
 #ifdef DEBUG
@@ -47,12 +48,8 @@ int main(void) {
     ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
     UARTStdioInit(0);
 
-    // Print demo introduction.
-	UARTprintf("This is an empty project using FreeRTOS\n");
-	UARTprintf("This was brought to you by Cristovao Rufino <cristovaozr@gmail.com>\n");
-
 	// Start tasks here
-
+	tinyshell_init();
 
     // Start the scheduler.  This should not return.
     vTaskStartScheduler();

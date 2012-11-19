@@ -63,7 +63,10 @@ OBJ :=	FreeRTOS/Source/list.o	\
 		FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o	\
 		FreeRTOS/Source/portable/MemMang/heap_2.o	\
 		startup.o	\
-		main.o
+		main.o	\
+		tinyshell/TinyShell.o	\
+		tinyshell/tinyshell_task.o	\
+		tinyshell/commands/about.o
 
 PROJECT := project
 
