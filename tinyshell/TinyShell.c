@@ -9,15 +9,13 @@
 #include "ColoredOutput.h"
 
 static Command_t *commands;
-static unsigned int CommandNumber;
 int (* t_printf)(const char *format, ...);
 void (* t_gets)(char *str, unsigned int size);
 
-void TinyShellInit (Command_t *command_list, unsigned int command_number, int (*printf_function)(const char *, ...),
+void TinyShellInit (Command_t *command_list, int (*printf_function)(const char *, ...),
     int (* gets_function)(char *, unsigned int)) {
 
 	commands = command_list;
-	CommandNumber = command_number;
 	t_printf = printf_function;
 	t_gets = gets_function;
 }
@@ -37,7 +35,7 @@ static int default_help (void) {
 	int i;
 
 	t_printf ("\n" BOLD_GREEN("TinyShell available commands:") "\n");
-	for (i = 0; i < CommandNumber; i++) {
+	for (i = 0; commands[i].command_name != 0; i++) {
 		t_printf(BOLD_YELLOW("%s") " - " BOLD_CYAN("%s\n"), commands[i].command_name,
                 (commands[i].description==0)? "No desc. available" : commands[i].description);
 	}
@@ -66,15 +64,15 @@ static int parse (char *command) {
 	arg_base = i + 1;
 
 	// Searches in list of commands. If not found returns ERR_COMMAND_NOT_FOUND
-	for (i = 0 ;i < CommandNumber; i++) {
+	for (i = 0 ;; i++) {
+
+		if (commands[i].command_name == 0)
+			return ERR_COMMAND_NOT_FOUND;
 
 		if (my_strcmp(commands[i].command_name, command) == 0)
 			break;
 
 	}
-
-	if (i == CommandNumber)
-		return ERR_COMMAND_NOT_FOUND;
 
 	// Build args, if any
 	if (commands[i].build_args) commands[i].build_args(&command[arg_base]);

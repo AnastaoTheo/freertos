@@ -37,7 +37,7 @@ typedef struct {
  * Starts TinyShell passing the command list, a printf-like function and a gets-like function.
  * The command list is an array of Command_t
  */
-void TinyShellInit (Command_t *command_list, unsigned int command_number, int (*printf_function)(const char *, ...),
+void TinyShellInit (Command_t *command_list,  int (*printf_function)(const char *, ...),
     int (* gets_function)(char *, unsigned int));
 
 /**
@@ -46,6 +46,7 @@ void TinyShellInit (Command_t *command_list, unsigned int command_number, int (*
 void TinyShellRun (void);
 
 #define ERR_COMMAND_NOT_FOUND -1
+#define NULL_TERMINATOR {0, 0, 0, 0}
 #define COMMAND_MAX_LENGTH 100
 
 #endif /* TINYSHELL_H_ */

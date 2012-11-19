@@ -85,5 +85,6 @@ clean:
 	@echo "Cleaning object files..."
 	@rm -rfv $(OBJ) $(UTILS_OBJ) $(LIB_OBJ)
 	@rm -rfv $(shell find . -type f -iname "*.d")
+	@rm -rfv $(PROJECT).axf $(PROJECT).bin
 	@echo "Done"
 

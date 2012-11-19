@@ -15,12 +15,13 @@
 #include "commands/about.h"
 
 static Command_t commands[] = {
-	{"about", about, 0, "About this shell"}
+	{"about", about, 0, "About this shell"},
+	NULL_TERMINATOR
 };
 
 void tinyshell_init (void) {
 
-	TinyShellInit (commands, 1, UARTprintf, UARTgets);
+	TinyShellInit (commands, UARTprintf, UARTgets);
 
 	xTaskCreate (TinyShellRun, "TinyShell", configMINIMAL_STACK_SIZE, 0, 1, 0);
 }
