@@ -68,7 +68,8 @@ OBJ :=	FreeRTOS/Source/list.o	\
 		tinyshell/tinyshell_task.o	\
 		tinyshell/commands/about.o \
 		tinyshell/commands/rgbled.o \
-		stellaris_drivers/rgb.o
+		stellaris_drivers/rgb.o \
+		tinyshell/commands/regrw.o
 
 PROJECT := project
 

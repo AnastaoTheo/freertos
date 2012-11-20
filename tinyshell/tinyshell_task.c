@@ -14,10 +14,13 @@
 
 #include "commands/about.h"
 #include "commands/rgbled.h"
+#include "commands/regrw.h"
 
 static Command_t commands[] = {
 	{"about", about, 0, "About this shell"},
 	{"rgbled", rgbled, rgbled_args, "Controls RGB Led: on, off, set RRRR GGGG BBBB 0-FFFF"},
+	{"regread", regread, regread_args, "Reads register value: regread AAAAAAAA"},
+	{"regwrite", regwrite, regwrite_args, "Writes register value: regwrite AAAAAAAA XXXXXXXX"},
 	NULL_TERMINATOR
 };
 
