@@ -86,7 +86,10 @@ int memdump (void) {
 	}
 
 	for (i = 0; i < (amount % 16); i++)
-		t_printf ("%X ", base[i + (j<<4)]);
+		if (base[i + (j<<4)] < 0x10)
+			t_printf ("0%X ", base[i + (j<<4)]);
+		else
+			t_printf ("%X ", base[i + (j<<4)]);
 
 	t_printf (" | ");
 

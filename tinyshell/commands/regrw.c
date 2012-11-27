@@ -23,6 +23,8 @@ int regwrite (void) {
  
 	UARTprintf ("Writing 0x%X in register 0x%X\r\n", address, value);
 	*address = value;
+
+	return 0;
 }
 
 void regwrite_args(char *command) {
